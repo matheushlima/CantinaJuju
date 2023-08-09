@@ -5,19 +5,35 @@
       <div class="info">
         <div class="name">Irmão do Jorel</div>
         <div class="wallet">
-          <div class="iconSaldo"></div>
+          <div class="iconSaldo" @click="toggleSaldoVisibility"></div>
           Saldo na carteira
         </div>
-        <div class="price">R$ 14,90</div>
+        <div class="price">{{ saldoVisible ? '----' : saldo }}</div>
       </div>
       <div class="image"></div>
       <div class="icons">
-        <div class="icon"></div> <!-- Primeiro ícone à direita -->
-        <div class="icon"></div> <!-- Segundo ícone à direita -->
+        <div class="iconCarrinho"></div> <!-- Primeiro ícone à direita -->
+        <div class="iconVoltar"></div> <!-- Segundo ícone à direita -->
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      saldo: 'R$ 42,00', // Valor original do saldo
+      saldoVisible: true, // Define se o saldo ou '----' deve ser mostrado
+    };
+  },
+  methods: {
+    toggleSaldoVisibility() {
+      this.saldoVisible = !this.saldoVisible;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .nav-bar {
@@ -66,7 +82,9 @@
 .iconSaldo {
   width: 14px;
   height: 12px;
-  background: #748494;
+  background: url('@/assets/icons/visualizarSaldoIcon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-right: 4px;
 }
 
@@ -88,10 +106,21 @@
   align-items: center;
 }
 
-.icon {
+.iconCarrinho {
   width: 18px;
   height: 12px;
-  background: #232B34;
+  background: url('@/assets/icons/carrinhoIcon.svg');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  margin-left: 8px; /* Adicione margem para separar os ícones */
+}
+
+.iconVoltar {
+  width: 18px;
+  height: 12px;
+  background: url('@/assets/icons/voltarIcon.svg');
+  background-size: contain; 
+  background-repeat: no-repeat;
   margin-left: 8px; /* Adicione margem para separar os ícones */
 }
 </style>
