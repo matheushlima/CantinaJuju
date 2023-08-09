@@ -24,27 +24,13 @@
       <div class="s-page-container">
         <div class="s-alunos-lista-container">
           <SCardAluno
-            imagemAluno='@/assets/irmaoJorel.svg'
-            nome="Irmão do Jorel"
-            turma="4ª B"
-            saldo="R$ 20,00"
-            button-label="Ver conteúdo"
-          />
-
-          <SCardAluno
-            imagemAluno='@/assets/jorel.svg'
-            nome="Jorel"
-            turma="8ª A"
-            saldo="R$ 25,50"
-            button-label="Ver conteúdo"
-          />
-          <SCardAluno
-            image='@/assets/nicolau.svg'
-            nome="Nicolau"
-            turma="2ª ano C"
-            saldo="R$ 17,40"
-            button-label="Ver conteúdo"
-           
+             v-for="aluno in alunos"
+             :key="aluno.nome"
+             :imagemAluno="aluno.imagemAluno"
+             :nome="aluno.nome"
+             :turma="aluno.turma"
+             :saldo="aluno.saldo"
+             :button-label="aluno.buttonLabel"
           />
         </div>
       </div>
@@ -54,9 +40,15 @@
 
 <script>
 import SCardAluno from '../components/app-cantina/SCardAluno.vue';
+import {alunos} from '@/entities/alunos.js'
 
 export default {
   components: { SCardAluno },
+  data(){
+    return{
+      alunos: alunos
+    }
+  },
   methods: {
     irParaOutraTela() {
       this.$router.push('/perfil');
