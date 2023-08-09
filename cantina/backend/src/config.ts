@@ -3,9 +3,18 @@ dotenv.config();
 
 interface Config {
   open_api_key: string;
+  // layers_token: string;
+  app_community: string;
+  app_id: string;
+  layers_url: string;
 }
+
 const config: Config = {
   open_api_key: getEnvironmentVariableByName("OPENAI_API_KEY"),
+  // layers_token: getEnvironmentVariableByName("LAYERS_TOKEN"),
+  app_community: getEnvironmentVariableByName("APP_COMMUNITY"),
+  app_id: getEnvironmentVariableByName("APP_ID"),
+  layers_url: getEnvironmentVariableByName("LAYERS_URL"),
 };
 
 function getEnvironmentVariableByName(name: string): string {

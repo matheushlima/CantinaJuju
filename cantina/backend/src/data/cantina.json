@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "items": [
+      {
+        "name": "Sanduíche de Frango",
+        "image": "sanduiche_frango.jpg",
+        "availableDays": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Suco de Laranja",
+        "image": "suco_laranja.jpg",
+        "availableDays": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "name": "Salada de Frutas",
+        "image": "salada_frutas.jpg",
+        "availableDays": [
+          1,
+          3,
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "items": [
+      {
+        "name": "Pizza de Queijo",
+        "image": "pizza_queijo.jpg",
+        "availableDays": [
+          2,
+          4
+        ]
+      },
+      {
+        "name": "Refrigerante",
+        "image": "refrigerante.jpg",
+        "availableDays": [
+          2,
+          4
+        ]
+      }
+    ]
+  }
+]

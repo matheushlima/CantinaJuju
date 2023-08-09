@@ -1,6 +1,10 @@
 import express from "express";
-import generate from "./src/services/ai/generate";
+import generate from "./src/services/ai";
 import bodyParser from "body-parser";
+import * as cantinaService from "./src/services/cantina";
+import * as userService from "./src/services/users";
+// import { notificationService } from "./src/services/notifications";
+
 const app = express();
 const port = 3000;
 
@@ -8,14 +12,14 @@ app.use(express.json());
 const jsonParser = bodyParser.json();
 
 interface User {
-  id: number;
+  id: string;
   name: string;
   walletBalance: number;
 }
 
 const users: User[] = [
-  { id: 1, name: "Usuário 1", walletBalance: 100 },
-  { id: 2, name: "Usuário 2", walletBalance: 50 },
+  { id: "1", name: "Usuário 1", walletBalance: 100 },
+  { id: "2", name: "Usuário 2", walletBalance: 50 },
 ];
 
 interface CartItem {
@@ -31,7 +35,7 @@ const carts: Cart = {};
 
 // Verificar saldo da carteira de um usuário
 app.get("/balance/:userId", (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = req.params.userId;
   const user = users.find((user) => user.id === userId);
 
   if (!user) {
@@ -62,7 +66,8 @@ app.post("/cart/:userId/add", (req, res) => {
 
 // Adicionar saldo à carteira do usuário
 app.post("/add-balance/:userId", (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = req.params.userId;
+  const email = req.body;
   const amount: number = req.body.amount;
 
   const user = users.find((user) => user.id === userId);
@@ -72,20 +77,28 @@ app.post("/add-balance/:userId", (req, res) => {
   }
 
   user.walletBalance += amount;
+  // notificationService(
+  //   userId,
+  //   email,
+  //   "Saldos adicionados",
+  //   `${amount} adicionado à carteira`,
+  //   String(Date.now()),
+  //   "come-abacate-bem-hackaton"
+  // );
 
   res.json({ message: "Saldo adicionado à carteira com sucesso" });
 });
 
 // Subtrair o valor da compra da carteira do usuário
 app.post("/checkout/:userId", (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = req.params.userId;
   const user = users.find((user) => user.id === userId);
 
   if (!user) {
     return res.status(404).json({ error: "Usuário não encontrado" });
   }
 
-  const cart = carts[userId] || [];
+  const cart = carts[parseInt(userId)] || [];
   const totalAmount = calculateTotal(cart);
 
   if (user.walletBalance < totalAmount) {
@@ -93,7 +106,7 @@ app.post("/checkout/:userId", (req, res) => {
   }
 
   user.walletBalance -= totalAmount;
-  carts[userId] = [];
+  carts[parseInt(userId)] = [];
 
   res.json({ message: "Compra realizada com sucesso" });
 });
@@ -123,6 +136,43 @@ app.get("/@layers:payments:Items:getRelated", jsonParser, (req, res) => {
 app.get("/@layers:payments:Tabs:getRelated", jsonParser, (req, res) => {
   // const result = tabsResult();
   return res.json({ status: "ok" });
+});
+
+// Rota para retornar os dados da cantina de um aluno
+app.get("/cantina/:studentId", (req, res) => {
+  const studentId = parseInt(req.params.studentId);
+  const cantina = cantinaService.getCantinaByStudentId(studentId);
+
+  if (!cantina) {
+    return res.status(404).json({ error: "Cantina não encontrada" });
+  }
+
+  res.json({ cantina });
+});
+
+// Rota para retornar os itens mais vendidos de uma cantina
+app.get("/cantina/:cantinaId/top-selling", (req, res) => {
+  const cantinaId = parseInt(req.params.cantinaId);
+  const topSellingItems = cantinaService.getTopSellingItems(cantinaId, 3); // Por exemplo, retornar os top 3 itens
+
+  res.json({ topSellingItems });
+});
+
+// Rota para retornar os produtos da cantina por dia da semana
+app.get("/cantina/:cantinaId/items/:dayOfWeek", (req, res) => {
+  const cantinaId = parseInt(req.params.cantinaId);
+  const dayOfWeek = parseInt(req.params.dayOfWeek);
+
+  const itemsByDay = cantinaService.getItemsByDay(cantinaId, dayOfWeek);
+
+  res.json({ itemsByDay });
+});
+
+// Rota para retornar os nomes dos usuários
+app.get("/users/names", (req, res) => {
+  const userNames = userService.getAllUserNames();
+
+  res.json({ userNames });
 });
 
 app.listen(port, () => {
