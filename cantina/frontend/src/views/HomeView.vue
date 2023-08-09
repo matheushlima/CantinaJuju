@@ -24,6 +24,7 @@
       <div class="s-page-container">
         <div class="s-alunos-lista-container">
           <SCardAluno
+            imagemAluno='@/assets/irmaoJorel.svg'
             nome="Irmão do Jorel"
             turma="4ª B"
             saldo="R$ 20,00"
@@ -31,12 +32,14 @@
           />
 
           <SCardAluno
+            imagemAluno='@/assets/jorel.svg'
             nome="Jorel"
             turma="8ª A"
             saldo="R$ 25,50"
             button-label="Ver conteúdo"
           />
           <SCardAluno
+            image='@/assets/nicolau.svg'
             nome="Nicolau"
             turma="2ª ano C"
             saldo="R$ 17,40"
