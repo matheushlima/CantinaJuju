@@ -5,7 +5,7 @@
       <div class="avatar-container">
         <el-avatar
           :size="32"
-          :src="circleUrl"
+          :src=imagemAluno
           class="avatar-content"
         />
       </div>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+
 export default {
   methods: {
     irParaOutraTela() {
@@ -49,6 +50,9 @@ export default {
   },
   name: "SCardAluno",
   props: {
+    imagemAluno: {
+      type: String,
+    },
     nome: {
       required: true,
       type: String,

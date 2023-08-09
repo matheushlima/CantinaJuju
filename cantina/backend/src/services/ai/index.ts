@@ -4,7 +4,7 @@ import config from "../../config";
 
 const openaiApiKey = config.open_api_key;
 const configuration = new Configuration({
-  apiKey: openaiApiKey,
+  apiKey: config.open_api_key,
 });
 const openai = new OpenAIApi(configuration);
 

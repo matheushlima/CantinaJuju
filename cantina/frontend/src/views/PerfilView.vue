@@ -1,16 +1,22 @@
 <template>
-    <NavBar>
-      
-    </NavBar>
+    <NavBar/>
+    <atalho-list-aluno/>
+    <cantinas-list/>
 </template>
 
 <script>
 import NavBar from '../components/app-cantina/NavBar.vue';
+import AtalhoListAluno from '@/components/app-cantina/AtalhoListAluno.vue';
+import CantinasList from '@/components/app-cantina/CantinaLista.vue';
+
 export default {
-  components: { NavBar },
+  components: { NavBar,
+    AtalhoListAluno,
+    CantinasList },
 }
 </script>
 
-<style scoped>
+<style s,
+    AtalhoListAlunocoped>
 
 </style>
