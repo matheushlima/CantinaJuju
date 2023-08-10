@@ -6,7 +6,7 @@
       <!-- Pedidos -->
       <div class="shortcut">
         <div class="bg"></div>
-        <div class="iconCarteira"></div>
+        <div class="iconCarteira" @click="carteira"></div>
         <div class="content">
           <div class="access">Acessar</div>
           <div class="title">Carteira</div>
@@ -30,6 +30,11 @@
 <script>
 export default {
   name: 'AtalhosListAluno',
+  methods: {
+    carteira() {
+      this.$router.push({name: 'carteira', replace:true});
+    },
+  },
 };
 </script>
 
