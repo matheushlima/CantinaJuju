@@ -5,7 +5,7 @@
       <AtalhoListAluno />
     </div>
     <CantinasList />
-      <div class="h2">Cardápio</div>
+      <div class="h2">Mais populares hoje</div>
     <div class="populer-items">
       <PopulerItems :scrolling="scrolling" />
     </div>
@@ -67,12 +67,14 @@ export default {
   line-height: 25px;
   color: #232b34;
   width: 100%;
-  padding-right: 250px;
-  position: sticky;}
+  padding-right: 150px;
+  position: sticky;
+  margin-top: 18px;
+}
 
 .fixa {
   position: sticky;
-  background-color: grey;
+  background-color: rgb(247, 247, 247);
   top: 0;
   z-index: 2; /* Adicione essa linha para sobrepor corretamente */
 }
