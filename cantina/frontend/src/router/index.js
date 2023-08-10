@@ -5,7 +5,7 @@ import CarteiraView from '../views/CarteiraView.vue'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: HomeView
   },
@@ -15,7 +15,7 @@ const routes = [
     component: PerfilView
   },
   {
-    path: '/',
+    path: '/carteira',
     name: 'carteira',
     component: CarteiraView
   }

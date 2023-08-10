@@ -14,7 +14,7 @@
       </div>
 
       <!-- Carteira -->
-      <div class="shortcut">
+      <div class="shortcut" @click="carteira">
         <div class="bg"></div>
         <div class="iconPedidos"></div>
         <div class="content">
@@ -30,6 +30,11 @@
 <script>
 export default {
   name: 'AtalhosListAluno',
+  methods: {
+    carteira() {
+      this.$router.push({name: 'carteira', replace:true});
+    },
+  },
 };
 </script>
 
