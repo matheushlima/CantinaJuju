@@ -3,7 +3,7 @@
     <div class="bg"></div>
     <div class="status-text">
       <div class="icon"></div>
-      <div>Está tudo bem! Você não possui pendências</div>
+      <div class="text">Está tudo bem! Você não possui pendências</div>
     </div>
   </div>
 </template>
@@ -18,8 +18,7 @@ export default {
 .status-tag {
   position: relative;
   width: 100%;
-  height: auto;
-  padding: 20px;
+  height: 48px;
   display: flex;
   align-items: center;
   background: #30B565;
@@ -47,8 +46,30 @@ export default {
 .icon {
   width: 16px;
   height: 16px;
-  background: #FFFFFF;
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-right: 10px;
+  background: url('@/assets/icons/statusOkIcon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.text{
+  /* Está tudo bem! Você não possuí pendências */
+width: 318px;
+height: 22px;
+left: 48px;
+top: 131px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 22px;
+
+color: #FFFFFF;
+
+
 }
 
 @media screen and (max-width: 768px) {
