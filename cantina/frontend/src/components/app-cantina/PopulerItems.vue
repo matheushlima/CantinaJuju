@@ -1,48 +1,84 @@
 <template>
-    <div class="popular-items-container">
-      <div class="item" v-for="(item, index) in items" :key="index">
-        <div class="item-content">
-          <div class="item-header">
-            <img class="item-image" :src="item.imageSrc" alt="Item Image" />
-            <div class="item-time">{{ item.time }}</div>
-          </div>
-          <div class="item-details">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-info">{{ item.info }}</div>
-            <div class="item-price">{{ item.price }}</div>
-          </div>
+  <div class="popular-items-container" v-if="!scrolling">
+    <div class="item" v-for="(item, index) in items" :key="index">
+      <div class="item-content">
+        <div class="item-time">
+          <div class="time-border">{{ item.horaInicial }} </div>
+          <div class="time-border">{{ item.horaFinal }}</div>
+        </div>
+        <div class="item-header">
+          <img class="item-image" :src="item.imageSrc" alt="Item Image" />
+        </div>
+        <div class="item-details">
+          <div class="item-title">{{ item.titulo }}</div>
+          <div class="item-info">{{ item.info }}</div>
+          <div class="item-price">{{ item.preco }} </div>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
 <style scoped>
 .popular-items-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 358px; /* Limitando a largura máxima */
+  margin: 0 auto; /* Centralizando horizontalmente */
+  padding: 16px;
+}
+
+.h2 {
+  /* Atalhos */
+  font-family: 'Nunito';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: #232b34;
+  margin-bottom: 10px;
 }
 
 .item {
-  width: 358px;
-  height: 376px;
+  width: 100%;
+  max-width: 358px;
   position: relative;
-  margin: 10px;
+
 }
 
 .item-content {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  display: flex;
+  align-items: center;
   background: white;
   border-radius: 15px;
   border: 0.50px #E8ECEF solid;
+  margin-left: 60px;
+}
+
+.item-time {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  width: 60px;
+}
+
+.time-border {
+  border: 1px solid #748494;
+  border-radius: 5px;
+  padding: 4px;
+  text-align: center;
+  color: #748494;
+  font-size: 12px;
+  font-family: Nunito;
+  font-weight: 600;
+  word-wrap: break-word;
 }
 
 .item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
+  flex: 0 0 72px;
+  margin-right: 10px;
+  margin-left: 17px;
 }
 
 .item-image {
@@ -52,16 +88,8 @@
   border: 0.50px #E8ECEF solid;
 }
 
-.item-time {
-  text-align: center;
-  color: #748494;
-  font-size: 12px;
-  font-family: Nunito;
-  font-weight: 600;
-  word-wrap: break-word;
-}
-
 .item-details {
+  flex: 1;
   padding: 16px;
   color: #434E5B;
   font-size: 16px;
@@ -95,35 +123,55 @@
   font-weight: 700;
 }
 </style>
+
 <script>
 export default {
+  props: ['scrolling'],
   data() {
     return {
       items: [
-        {
-          title: 'Sanduíche de croissant',
-          info: '220g . 540kcal',
-          price: 'R$ 10,90',
-          time: '16:00',
-          imageSrc: 'https://via.placeholder.com/72x72',
-        },
-        {
-          title: 'Sanduíche de croissant',
-          info: '220g . 540kcal',
-          price: 'R$ 10,90',
-          time: '16:40',
-          imageSrc: 'https://via.placeholder.com/72x72',
-        },
-        {
-          title: 'Salada de frutas',
-          info: '100g . 50kcal',
-          price: 'R$ 6,90',
-          time: '12:00',
-          imageSrc: 'https://via.placeholder.com/72x72',
-        },
+      {
+        titulo: 'Hamburguer Clássico',
+        info: '200g . 550kcal',
+        preco: 'R$ 12,90',
+        horaInicial: '10:30',
+        horaFinal: '13:00',
+        imageSrc: 'https://via.placeholder.com/72x72',
+      },
+      {
+        titulo: 'Wrap de Frango',
+        info: '180g . 420kcal',
+        preco: 'R$ 8,50',
+        horaInicial: '12:15',
+        horaFinal: '14:30',
+        imageSrc: 'https://via.placeholder.com/72x72',
+      },
+      {
+        titulo: 'Salada Caesar',
+        info: '150g . 320kcal',
+        preco: 'R$ 9,90',
+        horaInicial: '11:00',
+        horaFinal: '15:00',
+        imageSrc: 'https://via.placeholder.com/72x72',
+      },
+      {
+        titulo: 'Sopa de Legumes',
+        info: '250g . 180kcal',
+        preco: 'R$ 5,00',
+        horaInicial: '17:30',
+        horaFinal: '19:00',
+        imageSrc: 'https://via.placeholder.com/72x72',
+      },
+      {
+        titulo: 'Suco de Abacaxi',
+        info: '300ml',
+        preco: 'R$ 3,50',
+        horaInicial: '09:00',
+        horaFinal: '10:00',
+        imageSrc: 'https://via.placeholder.com/72x72',
+      },
       ],
     };
   },
 };
 </script>
-  
