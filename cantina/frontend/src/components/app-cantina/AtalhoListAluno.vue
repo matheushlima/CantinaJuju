@@ -6,7 +6,7 @@
       <!-- Pedidos -->
       <div class="shortcut">
         <div class="bg"></div>
-        <div class="iconCarteira"></div>
+        <div class="iconCarteira" @click="carteira"></div>
         <div class="content">
           <div class="access">Acessar</div>
           <div class="title">Carteira</div>
@@ -14,7 +14,7 @@
       </div>
 
       <!-- Carteira -->
-      <div class="shortcut" @click="carteira">
+      <div class="shortcut">
         <div class="bg"></div>
         <div class="iconPedidos"></div>
         <div class="content">
