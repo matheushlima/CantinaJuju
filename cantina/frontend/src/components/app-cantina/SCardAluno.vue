@@ -33,7 +33,7 @@
         label="Ver conteúdo"
         :border-radius="4"
         :padding="10"
-        @click="$router.push({ name: 'perfil', replace: true })"
+        @click= "irParaOutraTela"
       />
     </footer>
   </SCard>
@@ -45,6 +45,10 @@
 export default {
   methods: {
     irParaOutraTela() {
+      localStorage.setItem('perfilNome', this.nome);
+      localStorage.setItem('perfilImagem', this.imagemAluno);
+      localStorage.setItem('perfilSaldo', this.saldo);
+
       this.$router.push('/perfil');
     },
   },
