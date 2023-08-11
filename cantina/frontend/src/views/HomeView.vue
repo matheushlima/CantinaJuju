@@ -29,7 +29,7 @@
              :imagemAluno= aluno.imagemAluno
              :nome="aluno.nome"
              :turma="aluno.turma"
-             :saldo="aluno.saldo"
+             :saldo= "aluno.saldo"
              :button-label=Ver conteúdo
           />
         </div>
@@ -40,33 +40,22 @@
 
 <script>
 import SCardAluno from '../components/app-cantina/SCardAluno.vue';
-import {alunos} from '@/entities/alunos.js'
+import {GetAluno} from '@/entities/alunos.js'
 
 export default {
   components: { SCardAluno },
+  async created() {
+      this.alunos = await GetAluno();
+      console.log(this.alunos) // Chama o método getAluno durante a criação do componente
+  },
   data(){
     return{
-      alunosAPI: [],
-      alunos: alunos
+      alunos: []
     }
-  },
-  async created() {
-      await this.getAluno(); // Chama o método getAluno durante a criação do componente
   },
   methods: {
     irParaOutraTela() {
       this.$router.push('/perfil');
-    },
-    async getAluno() {
-      try{
-        const response = await fetch('https://64d5b332613ee4426d978760.mockapi.io/Alunos/Alunos');
-        const alunos = await response.json();
-        this.alunosAPI = alunos;
-      }
-      catch{
-        console.log("Deu erro ")
-      }
-      
     },
   }
 }
