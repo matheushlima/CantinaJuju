@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "../../config";
 
 const notificationService = async (
   email?: string,
@@ -7,8 +8,7 @@ const notificationService = async (
   date?: string,
   community?: string
 ) => {
-  const url =
-    "https://cantinanotification.azurewebsites.net/api/HttpTriggerNotificacaoCantina?code=5MYZBaqckz849xHFW5UwCfG43Du1VMzvSSgUXFSWB3ySAzFuanTGWA==";
+  const url = config.azure_url;
 
   const notificationData = {
     Emails: [email],

@@ -7,6 +7,7 @@ interface Config {
   app_community: string;
   app_id: string;
   layers_url: string;
+  azure_url: string;
 }
 
 const config: Config = {
@@ -15,6 +16,7 @@ const config: Config = {
   app_community: getEnvironmentVariableByName("APP_COMMUNITY"),
   app_id: getEnvironmentVariableByName("APP_ID"),
   layers_url: getEnvironmentVariableByName("LAYERS_URL"),
+  azure_url: getEnvironmentVariableByName("AZURE_URL"),
 };
 
 function getEnvironmentVariableByName(name: string): string {

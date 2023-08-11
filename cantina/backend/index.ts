@@ -1,12 +1,15 @@
 import express from "express";
-import generate from "./src/services/ai";
+import generateMenuBasedOnAvailableFood from "./src/services/ai/generateMenuBasedOnAvailableFood";
+import generateMenuBasedOnRestrictions from "./src/services/ai/generareMenuBasedOnRestrictions";
 import bodyParser from "body-parser";
 import * as cantinaService from "./src/services/cantina";
 import * as userService from "./src/services/users";
 import { notificationService } from "./src/services/notifications";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
+app.use(cors());
 
 app.use(express.json());
 const jsonParser = bodyParser.json();
@@ -122,9 +125,13 @@ app.get("/cart/:userId", (req, res) => {
   const cartItems = carts[userId];
   res.json({ items: cartItems });
 });
-
+// Rotas da AI
 app.post("/api/generate", jsonParser, (req, res) => {
-  generate(req, res);
+  generateMenuBasedOnAvailableFood(req, res);
+});
+
+app.post("/api/generateFromRestriction", jsonParser, (req, res) => {
+  generateMenuBasedOnRestrictions(req, res);
 });
 
 // Rotas do ecommerce
