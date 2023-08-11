@@ -3,7 +3,7 @@
     <div class="h2">Cantinas</div>
 
     <!-- Madalosso -->
-    <div class="cantina">
+    <div class="cantina" @click="desenvolvendo">
       <div>
         <div class="imgBanner"></div>
         <div class="infoCantina">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Subway -->
-    <div class="cantina">
+    <div class="cantina" @click="desenvolvendo">
       <div>
         <div class="imgBannerShostners"></div>
         <div class="infoCantina">
@@ -46,6 +46,11 @@
 <script>
 export default {
   name: 'CantinasList',
+  methods: {
+    desenvolvendo(){
+      this.$router.push({name: 'desenvolvendo', replace:true});
+    }
+  },
 };
 </script>
 

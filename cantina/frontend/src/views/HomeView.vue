@@ -26,7 +26,7 @@
           <SCardAluno
              v-for="aluno in alunos"
              :key="aluno.name"
-             :imagemAluno="aluno.imagemAluno"
+             :imagemAluno= aluno.imagemAluno
              :nome="aluno.nome"
              :turma="aluno.turma"
              :saldo="aluno.saldo"
@@ -58,9 +58,15 @@ export default {
       this.$router.push('/perfil');
     },
     async getAluno() {
-      const response = await fetch('http://localhost:3000/Alunos');
-      const alunos = await response.json();
-      this.alunosAPI = alunos;
+      try{
+        const response = await fetch('https://64d5b332613ee4426d978760.mockapi.io/Alunos/Alunos');
+        const alunos = await response.json();
+        this.alunosAPI = alunos;
+      }
+      catch{
+        console.log("Deu erro ")
+      }
+      
     },
   }
 }
