@@ -26,13 +26,12 @@
 .popular-items-container {
   position: relative;
   width: 100%;
-  max-width: 358px; /* Limitando a largura máxima */
-  margin: 0 auto; /* Centralizando horizontalmente */
+  max-width: 358px;
+  margin: 0 auto;
   padding: 0px 16px 16px 16px;
 }
 
 .h2 {
-  /* Atalhos */
   font-family: 'Nunito';
   font-weight: 500;
   font-size: 18px;

@@ -26,7 +26,7 @@ export default {
   font-family: 'Nunito';
   font-weight: 600;
   font-size: 16px;
-  box-sizing: border-box; /* Adicione esta linha */
+  box-sizing: border-box;
 }
 
 .bg {
@@ -40,7 +40,7 @@ export default {
 .status-text {
   display: flex;
   align-items: center;
-  flex: 1; /* Para ocupar espaço disponível */
+  flex: 1;
 }
 
 .icon {
@@ -54,22 +54,19 @@ export default {
   background-repeat: no-repeat;
 }
 
-.text{
-  /* Está tudo bem! Você não possuí pendências */
-width: 318px;
-height: 22px;
-left: 48px;
-top: 131px;
+.text {
+  width: 318px;
+  height: 22px;
+  left: 48px;
+  top: 131px;
 
-font-family: 'Nunito';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 22px;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
 
-color: #FFFFFF;
-
-
+  color: #FFFFFF;
 }
 
 @media screen and (max-width: 768px) {
@@ -79,7 +76,7 @@ color: #FFFFFF;
   }
 
   .bg {
-    display: none; /* Esconder o fundo colorido em telas menores */
+    display: none;
   }
 }
 </style>

@@ -57,8 +57,6 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos existentes aqui */
-
 
 .h2 {
   font-family: 'Nunito';
@@ -76,7 +74,7 @@ export default {
   position: sticky;
   background-color: rgb(247, 247, 247);
   top: 0;
-  z-index: 2; /* Adicione essa linha para sobrepor corretamente */
+  z-index: 2;
 }
 
 .populer-items {
@@ -85,7 +83,6 @@ export default {
   padding-top: 10px;
 }
 
-/* Animação de fade-in/out */
 .populer-items-enter-active, .populer-items-leave-active {
   transition: opacity 0.3s;
 }

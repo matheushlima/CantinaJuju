@@ -33,8 +33,8 @@ export default {
   methods: {
     formatarMoeda() {
       let valorLimpo = this.inputValue
-        .replace(/[^\d.]/g, '')  // Remove caracteres não numéricos exceto ponto
-        .replace(/^(\d+\.\d{2}).*/, '$1');  // Mantém até duas casas decimais
+        .replace(/[^\d.]/g, '') 
+        .replace(/^(\d+\.\d{2}).*/, '$1'); 
         
       if (valorLimpo.indexOf('.') === -1) {
         valorLimpo += '.00';

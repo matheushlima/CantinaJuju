@@ -23,7 +23,6 @@
         </div>
       </div>
     </div>
-    <!-- Mais atalhos aqui... -->
   </div>
 </template>
 
@@ -45,13 +44,12 @@ export default {
 .atalhosList {
   position: relative;
   width: 100%;
-  max-width: 358px; /* Limitando a largura máxima */
-  margin: 0 auto; /* Centralizando horizontalmente */
+  max-width: 358px;
+  margin: 0 auto;
   padding: 16px;
 }
 
 .h2 {
-  /* Atalhos */
   font-family: 'Nunito';
   font-weight: 500;
   font-size: 18px;
@@ -69,7 +67,7 @@ export default {
 
 .shortcut {
   position: relative;
-  width: calc(50% - 10px); /* 2 botões lado a lado com espaço entre eles */
+  width: calc(50% - 10px);
   height: 72px;
   border-radius: 8px;
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -86,7 +84,6 @@ export default {
 }
 
 .iconPedidos {
-  /* img */
   width: 40px;
   height: 40px;
   background: url('@/assets/icons/pedidosIcon.png');
@@ -98,7 +95,6 @@ export default {
 }
 
 .iconCarteira {
-  /* img */
   width: 40px;
   height: 40px;
   background: url('@/assets/icons/carteiraIcon.png');
@@ -117,7 +113,6 @@ export default {
 }
 
 .title {
-  /* Carteira */
   font-family: 'Nunito';
   font-weight: 600;
   font-size: 16px;
@@ -126,7 +121,6 @@ export default {
 }
 
 .access {
-  /* Acessar */
   font-family: 'Nunito';
   font-weight: 500;
   font-size: 14px;

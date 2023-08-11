@@ -18,7 +18,7 @@
       </div>
       <div class="image"></div>
       <div class="icons">
-        <div class="iconCarrinho"></div> <!-- Primeiro ícone à direita -->
+        <div class="iconCarrinho"></div>
       </div>
     </div>
   </div>
@@ -28,8 +28,7 @@
 export default {
   data() {
     return {
-      saldo: 'R$ 42,00', // Valor original do saldo
-      saldoVisible: true, // Define se o saldo ou '----' deve ser mostrado
+      saldoVisible: true,
     };
   },
   methods: {

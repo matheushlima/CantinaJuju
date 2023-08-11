@@ -2,7 +2,7 @@
   <div class="cantinas-list">
     <div class="h2">Cantinas</div>
 
-    <!-- Madalosso -->
+    <!-- CantinaDaJuju -->
     <div class="cantina" @click="desenvolvendo">
       <div>
         <div class="imgBanner"></div>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <!-- Subway -->
+    <!-- Shostners -->
     <div class="cantina" @click="desenvolvendo">
       <div>
         <div class="imgBannerShostners"></div>

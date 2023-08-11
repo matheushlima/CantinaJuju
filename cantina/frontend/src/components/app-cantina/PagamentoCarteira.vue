@@ -55,7 +55,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* Alteração aqui para alinhar à esquerda */
   padding: 20px;
   width: 100%;
   max-width: 360px;

@@ -11,15 +11,12 @@
         </div>
       </template>
     </SNavBar>
-
-    <!-- Carregando -->
     <SAlunosListaLoad/>
 
     <div>
       <SSwiperOnBoard :fechar-on-board="fecharOnBoard" />
     </div>
 
-    <!-- Página Completa -->
     <SContainer>
       <div class="s-page-container">
         <div class="s-alunos-lista-container">
@@ -46,7 +43,7 @@ export default {
   components: { SCardAluno },
   async created() {
       this.alunos = await GetAluno();
-      console.log(this.alunos) // Chama o método getAluno durante a criação do componente
+      console.log(this.alunos)
   },
   data(){
     return{

@@ -8,7 +8,7 @@
 </template>
 <script>
 import NavBar from '../components/app-cantina/NavBar.vue';
-import StatusCarteira from '@/components/app-cantina/StatusCarteira.vue';
+import StatusCarteira from '../components/app-cantina/StatusCarteira.vue';
 import CantinaSaldo from '../components/app-cantina/CantinaSaldo.vue';
 import PagamentoCarteira from '../components/app-cantina/PagamentoCarteira.vue';
 export default {

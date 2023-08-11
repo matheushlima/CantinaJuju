@@ -23,7 +23,6 @@ const alunos = [
       saldo: '17,40',
       buttonLabel: 'Ver conteúdo',
     },
-    // Adicione mais alunos aqui, se necessário
   ];
 
   export const GetAluno = async () => {
@@ -54,6 +53,6 @@ const alunos = [
 
     }
     catch{
-      console.log("Deu erro ")
+      console.log("Falha na requisição!")
     }
   }
