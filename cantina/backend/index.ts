@@ -23,6 +23,7 @@ interface User {
 const users: User[] = [
   { id: "1", name: "Usuário 1", walletBalance: 100 },
   { id: "2", name: "Usuário 2", walletBalance: 50 },
+  { id: "3", name: "Usuário 3", walletBalance: 250.1 },
 ];
 
 interface CartItem {
@@ -36,7 +37,7 @@ interface Cart {
 
 const carts: Cart = {};
 
-// Verificar saldo da carteira de um usuário
+// Veify wallet
 app.get("/balance/:userId", (req, res) => {
   const userId = req.params.userId;
   const user = users.find((user) => user.id === userId);
@@ -48,7 +49,7 @@ app.get("/balance/:userId", (req, res) => {
   res.json({ balance: user.walletBalance });
 });
 
-// Adicionar itens no carrinho
+// Add itens to chart
 app.post("/cart/:userId/add", (req, res) => {
   const userId = parseInt(req.params.userId);
   const items: CartItem[] = req.body.items;
@@ -67,7 +68,7 @@ app.post("/cart/:userId/add", (req, res) => {
   });
 });
 
-// Adicionar saldo à carteira do usuário
+// Add credito to wallet
 app.post("/add-balance/:userId", (req, res) => {
   const userId = req.params.userId;
   const email = req.body;
@@ -92,7 +93,7 @@ app.post("/add-balance/:userId", (req, res) => {
   res.json({ message: "Saldo adicionado à carteira com sucesso" });
 });
 
-// Subtrair o valor da compra da carteira do usuário
+// Reduce credit from wallet
 app.post("/checkout/:userId", (req, res) => {
   const userId = req.params.userId;
   const user = users.find((user) => user.id === userId);
@@ -114,7 +115,7 @@ app.post("/checkout/:userId", (req, res) => {
   res.json({ message: "Compra realizada com sucesso" });
 });
 
-// Retornar itens do carrinho de um usuário
+// Return chart itens by user id
 app.get("/cart/:userId", (req, res) => {
   const userId = parseInt(req.params.userId);
 
@@ -125,7 +126,7 @@ app.get("/cart/:userId", (req, res) => {
   const cartItems = carts[userId];
   res.json({ items: cartItems });
 });
-// Rotas da AI
+// AI routes
 app.post("/api/generate", jsonParser, (req, res) => {
   generateMenuBasedOnAvailableFood(req, res);
 });
@@ -134,7 +135,7 @@ app.post("/api/generateFromRestriction", jsonParser, (req, res) => {
   generateMenuBasedOnRestrictions(req, res);
 });
 
-// Rotas do ecommerce
+// ecommerce routes
 app.get("/@layers:payments:Items:getRelated", jsonParser, (req, res) => {
   // const result = getItems();
   return res.json({ status: "okk" });
@@ -145,7 +146,7 @@ app.get("/@layers:payments:Tabs:getRelated", jsonParser, (req, res) => {
   return res.json({ status: "ok" });
 });
 
-// Rota para retornar os dados da cantina de um aluno
+// Route to retrieve cafeteria data for a student.
 app.get("/cantina/:studentId", (req, res) => {
   const studentId = parseInt(req.params.studentId);
   const cantina = cantinaService.getCantinaByStudentId(studentId);
@@ -157,7 +158,7 @@ app.get("/cantina/:studentId", (req, res) => {
   res.json({ cantina });
 });
 
-// Rota para retornar os itens mais vendidos de uma cantina
+// Best seller
 app.get("/cantina/:cantinaId/top-selling", (req, res) => {
   const cantinaId = parseInt(req.params.cantinaId);
   const topSellingItems = cantinaService.getTopSellingItems(cantinaId, 3); // Por exemplo, retornar os top 3 itens
@@ -165,7 +166,7 @@ app.get("/cantina/:cantinaId/top-selling", (req, res) => {
   res.json({ topSellingItems });
 });
 
-// Rota para retornar os produtos da cantina por dia da semana
+// Products by day of week
 app.get("/cantina/:cantinaId/items/:dayOfWeek", (req, res) => {
   const cantinaId = parseInt(req.params.cantinaId);
   const dayOfWeek = parseInt(req.params.dayOfWeek);
@@ -175,7 +176,7 @@ app.get("/cantina/:cantinaId/items/:dayOfWeek", (req, res) => {
   res.json({ itemsByDay });
 });
 
-// Rota para retornar os nomes dos usuários
+// Users
 app.get("/users/names", (req, res) => {
   // const userNames = userService.getAllUserNames();
   // const realted = userService.getUsersRelated(
