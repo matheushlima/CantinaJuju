@@ -6,20 +6,20 @@
       <!-- Pedidos -->
       <div class="shortcut">
         <div class="bg"></div>
-        <div class="icon"></div>
+        <div class="iconCarteira" @click="carteira"></div>
         <div class="content">
           <div class="access">Acessar</div>
-          <div class="title">Pedidos</div>
+          <div class="title">Carteira</div>
         </div>
       </div>
 
       <!-- Carteira -->
       <div class="shortcut">
         <div class="bg"></div>
-        <div class="icon"></div>
+        <div class="iconPedidos" @click="desenvolvendo"></div>
         <div class="content">
-          <div class="access">Acessar</div>
-          <div class="title">Carteira</div>
+          <div class="access" >Acessar</div>
+          <div class="title">Pedidos</div>
         </div>
       </div>
     </div>
@@ -30,6 +30,14 @@
 <script>
 export default {
   name: 'AtalhosListAluno',
+  methods: {
+    carteira() {
+      this.$router.push({name: 'carteira', replace:true});
+    },
+    desenvolvendo(){
+      this.$router.push({name: 'desenvolvendo', replace:true});
+    }
+  },
 };
 </script>
 
@@ -49,7 +57,8 @@ export default {
   font-size: 18px;
   line-height: 25px;
   color: #232b34;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-right: 250px;
 }
 
 .shortcuts-container {
@@ -76,11 +85,25 @@ export default {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.icon {
+.iconPedidos {
   /* img */
   width: 40px;
   height: 40px;
-  background-color: #232B34;
+  background: url('@/assets/icons/pedidosIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 16px;
+  margin-left: 16px;
+  border-radius: 50%;
+}
+
+.iconCarteira {
+  /* img */
+  width: 40px;
+  height: 40px;
+  background: url('@/assets/icons/carteiraIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-left: 16px;
   border-radius: 50%;
 }
