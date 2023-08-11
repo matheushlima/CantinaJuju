@@ -16,9 +16,9 @@
       <!-- Carteira -->
       <div class="shortcut">
         <div class="bg"></div>
-        <div class="iconPedidos"></div>
+        <div class="iconPedidos" @click="desenvolvendo"></div>
         <div class="content">
-          <div class="access">Acessar</div>
+          <div class="access" >Acessar</div>
           <div class="title">Pedidos</div>
         </div>
       </div>
@@ -34,6 +34,9 @@ export default {
     carteira() {
       this.$router.push({name: 'carteira', replace:true});
     },
+    desenvolvendo(){
+      this.$router.push({name: 'desenvolvendo', replace:true});
+    }
   },
 };
 </script>

@@ -25,12 +25,12 @@
         <div class="s-alunos-lista-container">
           <SCardAluno
              v-for="aluno in alunos"
-             :key="aluno.nome"
-             :imagemAluno="aluno.imagemAluno"
+             :key="aluno.name"
+             :imagemAluno= aluno.imagemAluno
              :nome="aluno.nome"
              :turma="aluno.turma"
              :saldo="aluno.saldo"
-             :button-label="aluno.buttonLabel"
+             :button-label=Ver conteúdo
           />
         </div>
       </div>
@@ -46,17 +46,30 @@ export default {
   components: { SCardAluno },
   data(){
     return{
+      alunosAPI: [],
       alunos: alunos
     }
+  },
+  async created() {
+      await this.getAluno(); // Chama o método getAluno durante a criação do componente
   },
   methods: {
     irParaOutraTela() {
       this.$router.push('/perfil');
-    }
+    },
+    async getAluno() {
+      try{
+        const response = await fetch('https://64d5b332613ee4426d978760.mockapi.io/Alunos/Alunos');
+        const alunos = await response.json();
+        this.alunosAPI = alunos;
+      }
+      catch{
+        console.log("Deu erro ")
+      }
+      
+    },
   }
 }
-
-
 </script>
 
 <style scoped>
