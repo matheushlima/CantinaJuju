@@ -3,7 +3,7 @@ import generate from "./src/services/ai";
 import bodyParser from "body-parser";
 import * as cantinaService from "./src/services/cantina";
 import * as userService from "./src/services/users";
-// import { notificationService } from "./src/services/notifications";
+import { notificationService } from "./src/services/notifications";
 
 const app = express();
 const port = 3000;
@@ -77,14 +77,14 @@ app.post("/add-balance/:userId", (req, res) => {
   }
 
   user.walletBalance += amount;
-  // notificationService(
-  //   userId,
-  //   email,
-  //   "Saldos adicionados",
-  //   `${amount} adicionado à carteira`,
-  //   String(Date.now()),
-  //   "come-abacate-bem-hackaton"
-  // );
+  notificationService(
+    // userId,
+    email,
+    "Saldos adicionados",
+    `${amount} adicionado à carteira`,
+    String(Date.now()),
+    "come-abacate-bem-hackaton"
+  );
 
   res.json({ message: "Saldo adicionado à carteira com sucesso" });
 });
@@ -170,9 +170,37 @@ app.get("/cantina/:cantinaId/items/:dayOfWeek", (req, res) => {
 
 // Rota para retornar os nomes dos usuários
 app.get("/users/names", (req, res) => {
-  const userNames = userService.getAllUserNames();
+  // const userNames = userService.getAllUserNames();
+  // const realted = userService.getUsersRelated(
+  //   "64d227611b927d001696b821",
+  //   "come-abacate-bem-hackaton"
+  // );
 
-  res.json({ userNames });
+  const result = [
+    {
+      // imagemAluno: require("@/assets/irmaoJorel.svg"),
+      nome: "Irmão do Jorel",
+      turma: "4ª B",
+      saldo: "R$ 20,00",
+      buttonLabel: "Ver conteúdo",
+    },
+    {
+      // imagemAluno: require("@/assets/jorel.svg"),
+      nome: "Jorel",
+      turma: "8ª A",
+      saldo: "R$ 25,50",
+      buttonLabel: "Ver conteúdo",
+    },
+    {
+      // imagemAluno: require("@/assets/nicolau.svg"),
+      nome: "Nicolau",
+      turma: "2ª ano C",
+      saldo: "R$ 17,40",
+      buttonLabel: "Ver conteúdo",
+    },
+  ];
+
+  res.json({ result });
 });
 
 app.listen(port, () => {
